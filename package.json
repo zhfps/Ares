@@ -1,39 +1,48 @@
 {
-  "name": "electron-vite-react",
-  "version": "2.2.0",
+  "name": "Ares",
+  "version": "1.0.0-alpha",
   "main": "dist-electron/main/index.js",
   "description": "Electron Vite React boilerplate.",
-  "author": "草鞋没号 <308487730@qq.com>",
+  "author": "it_dog)zhang",
   "license": "MIT",
   "private": true,
   "debug": {
     "env": {
-      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3000/"
     }
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
+    "build:win": "vue-tsc --noEmit && vite build && electron-builder install-app-deps && electron-builder --win --config ./electron-builder.json",
     "preview": "vite preview",
-    "pree2e": "vite build --mode=test",
-    "e2e": "playwright test"
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "electron-updater": "^6.1.1"
+    "@fluentui/react-components": "^9.37.4",
+    "electron-updater": "^6.1.8"
   },
   "devDependencies": {
+    "@eslint/js": "^9.2.0",
     "@playwright/test": "^1.37.1",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.0.4",
     "autoprefixer": "^10.4.16",
-    "electron": "^26.0.0",
-    "electron-builder": "^24.6.3",
+    "electron": "^26.6.10",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "globals": "^15.1.0",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6",
+    "typescript-eslint": "^7.8.0",
     "vite": "^4.4.9",
     "vite-plugin-electron": "^0.15.3",
     "vite-plugin-electron-renderer": "^0.14.5"
