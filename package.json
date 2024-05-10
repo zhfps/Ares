@@ -18,7 +18,7 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.37.4",
+    "@fluentui/react-components": "^9.49.2",
     "electron-updater": "^6.1.8"
   },
   "devDependencies": {

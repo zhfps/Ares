@@ -17,7 +17,31 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+/* 设置滚动条整体样式 */
+::-webkit-scrollbar {
+  width: 5px; /* 对于垂直滚动条，设置高度；对于水平滚动条，设置宽度 */
+}
 
+/* 设置滚动条滑块的样式 */
+::-webkit-scrollbar-thumb {
+  background-color: #eee; /* 设置滑块的背景颜色 */
+  border-radius: 2px; /* 设置滑块的圆角 */
+}
+
+/* 设置滚动条轨道的样式 */
+::-webkit-scrollbar-track {
+  background-color: #fff; /* 设置轨道的背景颜色 */
+}
+
+/* 设置滚动条按钮的样式 */
+::-webkit-scrollbar-button {
+  display: none; /* 隐藏滚动条按钮 */
+}
+
+/* 设置滚动条角落的样式 */
+::-webkit-scrollbar-corner {
+  background-color: #f5f5f5; /* 设置角落的背景颜色 */
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -91,4 +115,13 @@ code {
   code {
     background-color: #f9f9f9;
   }
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0003;
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
 }
