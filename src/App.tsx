@@ -1,40 +1,63 @@
-import { useState } from 'react'
-import UpdateElectron from '@/components/update'
-import logoVite from './assets/logo-vite.svg'
-import logoElectron from './assets/logo-electron.svg'
-import './App.css'
-import { Button } from '@fluentui/react-components'
-console.log('[App.tsx]', `Hello world from Electron ${process.versions.electron}!`)
+import React from 'react'
+import {
+  CssBaseline,
+  MuiThemeProvider,
+  Container,
+  Card,
+  CardContent,
+  Typography
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core'
 
-function App() {
-    const [count, setCount] = useState(0)
-    return (
-        <div className='App'>
-            <div className='logo-box'>
-                <a href='https://github.com/electron-vite/electron-vite-react' target='_blank' rel="noreferrer">
-                    <img src={logoVite} className='logo vite' alt='Electron + Vite logo' />
-                    <img src={logoElectron} className='logo electron' alt='Electron + Vite logo' />
-                </a>
-            </div>
-            <h1>Electron + Vite + React</h1>
-            <div className='card'>
-                <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-                </Button>
-                <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>
-        Click on the Electron + Vite logo to learn more
-            </p>
-            <div className='flex-center'>
-        Place static files into the<code>/public</code> folder <img style={{ width: '5em' }} src='./node.svg' alt='Node logo' />
-            </div>
+import { Editor } from './components/editor'
+import { Descendant } from 'slate'
 
-            <UpdateElectron />
-        </div>
-    )
+const theme = createTheme()
+//
+const useStyles = makeStyles(theme => ({
+  root: {
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(4)
+  },
+  title: {
+    margin: theme.spacing(0, 2, 2)
+  },
+  card: {
+    marginBottom: theme.spacing(2)
+  }
+}))
+
+const initialValue: Descendant[] = [
+  {
+    type: 'paragraph',
+    children: [{ text: '' }]
+  }
+]
+
+export default function App() {
+  const [value, setValue] = React.useState(initialValue)
+  const s = useStyles()
+
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container className={s.root} maxWidth="sm">
+        <Typography className={s.title} component="h1" variant="h5">
+          Slate.js Sandbox
+        </Typography>
+        <Card className={s.card} elevation={0}>
+          <CardContent>
+            <Editor
+              value={value}
+              onChange={x => setValue(x)}
+              placeholder="Write text here..."
+              autoFocus
+              spellCheck
+            />
+          </CardContent>
+        </Card>
+      </Container>
+    </MuiThemeProvider>
+  )
 }
-
-export default App
