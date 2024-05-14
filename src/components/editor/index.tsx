@@ -1,25 +1,20 @@
 import React from 'react'
+//
 import { createEditor, Descendant, Node } from 'slate'
+//
 import {
   Editable,
   withReact,
-  Slate,
-  RenderElementProps,
-  RenderLeafProps
+  Slate
 } from 'slate-react'
+//
+import { renderElement } from './components/renderElement'
 
-import { DefaultElement } from './components/elements'
-import { Toolbar } from './components/Toolbar'
+import renderLeaf from './components/renderLeaf'
 
-function renderElement(props: RenderElementProps) {
-  const { attributes, children } = props
-  return <DefaultElement {...attributes}>{children}</DefaultElement>
-}
 
-function renderLeaf(props: RenderLeafProps) {
-  const { attributes, children } = props
-  return <span {...attributes}>{children}</span>
-}
+
+
 
 export interface EditorProps {
   value: Descendant[];
@@ -35,7 +30,6 @@ export function Editor(props: EditorProps) {
 
   return (
     <Slate editor={editor} initialValue={value} onChange={onChange}>
-      <Toolbar open={true} />
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
